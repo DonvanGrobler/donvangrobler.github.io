@@ -1,5 +1,6 @@
 ---
 const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/writing/', label: 'Writing' },
@@ -7,7 +8,7 @@ const links = [
   { href: '/about/', label: 'About' },
 ];
 ---
-<header class="site-header">
+<header class:list={['site-header', { 'home-header': isHome }]}>
   <div class="container nav-wrap">
     <a class="brand" href="/" aria-label="Donvan Grobler home">
       <span class="brand-mark" aria-hidden="true"><i></i></span>
@@ -26,6 +27,7 @@ const links = [
 
 <style>
   .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(18px); }
+  .site-header.home-header { border-bottom-color: rgba(134, 214, 243, .14); background: rgba(2, 8, 18, .78); color: #eef9ff; }
   .nav-wrap { min-height: 72px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1.2rem; }
   .brand { display: inline-flex; align-items: center; gap: 0.7rem; width: fit-content; font-weight: 800; text-decoration: none; letter-spacing: -0.02em; }
   .brand-mark { position: relative; display: grid; place-items: center; width: 38px; height: 38px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line)); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #38a6c9, #07506f 65%, #061b28); box-shadow: 0 0 20px rgba(8,127,167,.18); }
@@ -34,7 +36,10 @@ const links = [
   nav { display: flex; gap: 0.2rem; }
   nav a { padding: 0.5rem 0.72rem; border-radius: 999px; color: var(--muted); font-size: 0.9rem; font-weight: 650; text-decoration: none; }
   nav a:hover, nav a.active { background: var(--surface-solid); color: var(--text); }
+  .home-header nav a { color: #9db5c2; }
+  .home-header nav a:hover, .home-header nav a.active { background: rgba(126, 211, 242, .1); color: #eef9ff; }
   .theme-toggle { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--text); cursor: pointer; }
+  .home-header .theme-toggle { border-color: rgba(141, 217, 244, .2); background: rgba(12, 35, 50, .72); color: #eaf8fd; }
   @media (max-width: 760px) {
     .nav-wrap { grid-template-columns: 1fr auto; min-height: 64px; }
     .brand span:last-child { display: none; }
