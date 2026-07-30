@@ -1,0 +1,10 @@
+<style is:global>
+  /* Keep the desktop scrollytelling viewport below the persistent navigation. */
+  @media (min-width: 901px) {
+    .orbital-journey .journey-sticky {
+      top: 72px;
+      height: calc(100svh - 72px);
+      min-height: min(590px, calc(100svh - 72px));
+    }
+  }
+</style>
