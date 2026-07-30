@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OrbitalJourney from '../components/OrbitalJourney.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
@@ -8,115 +9,281 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 const focusAreas = [
   {
+    code: 'EO / 01',
     title: 'Earth observation products',
     text: 'Shaping satellite-data capabilities into dependable services that solve concrete user problems.',
-    tags: ['EO services', 'Product strategy', 'Operations'],
   },
   {
+    code: 'AI / 02',
     title: 'Geospatial AI',
-    text: 'Exploring how AI can improve discovery, interpretation and interaction without hiding uncertainty or provenance.',
-    tags: ['Applied AI', 'Human–AI interaction', 'Prototyping'],
+    text: 'Exploring how AI can improve discovery, interpretation and interaction while preserving context and trust.',
   },
   {
+    code: 'PL / 03',
     title: 'Technical programme leadership',
-    text: 'Connecting users, partners, data scientists and engineers across complex European geospatial initiatives.',
-    tags: ['Delivery', 'Partnerships', 'Technical translation'],
+    text: 'Connecting users, partners, data scientists and engineers across complex geospatial initiatives.',
   },
 ];
 ---
 <BaseLayout>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">Earth observation · Geospatial AI · Product leadership</p>
-        <h1>Turning satellite data into useful decisions.</h1>
-        <p class="lead">I work where Earth observation, technology and product development meet—helping teams move from promising geospatial capability to services people can understand, trust and use.</p>
+  <div class="home-page">
+    <OrbitalJourney />
+
+    <section class="mission-profile">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Mission profile</p>
+            <h2>Working across the full geospatial journey.</h2>
+          </div>
+          <p>My role is often to connect the parts that are individually strong but difficult to turn into one coherent, reliable experience.</p>
+        </div>
+
+        <div class="mission-grid">
+          {focusAreas.map((area) => (
+            <article class="mission-card">
+              <p class="mission-code">{area.code}</p>
+              <h3>{area.title}</h3>
+              <p>{area.text}</p>
+              <span class="signal-line" aria-hidden="true"></span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="latest-section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Latest writing</p>
+            <h2>Ideas, lessons and open questions.</h2>
+          </div>
+          <p>Notes on Earth observation, AI, product development and the work required to turn technical capability into meaningful outcomes.</p>
+        </div>
+
+        <div class="article-grid">
+          {posts.map((post) => (
+            <a class="article-card" href={`/blog/${post.id}/`}>
+              <p class="meta">{post.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <h3>{post.data.title}</h3>
+              <p>{post.data.description}</p>
+              <span>Open article <i aria-hidden="true">↗</i></span>
+            </a>
+          ))}
+        </div>
+
         <div class="button-row">
-          <a class="button" href="/about/">Explore my profile</a>
-          <a class="button secondary" href="/writing/">Read my writing</a>
+          <a class="button secondary" href="/writing/">View all writing</a>
         </div>
       </div>
-      <div class="earth-visual" aria-hidden="true">
-        <div class="planet">
-          <span class="land land-one"></span>
-          <span class="land land-two"></span>
-          <span class="scan-line"></span>
-        </div>
-        <span class="orbit orbit-one"><i class="satellite"></i></span>
-        <span class="orbit orbit-two"></span>
-        <span class="data-node node-one"></span>
-        <span class="data-node node-two"></span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section compact">
-    <div class="container profile-strip">
-      <div>
-        <p class="eyebrow">Profile</p>
-        <h2>A bridge between technical delivery and product direction.</h2>
-      </div>
-      <p class="lead">Based in Innsbruck, I combine programme ownership with hands-on geospatial literacy, proposal development and a research-grounded understanding of land-use and environmental change.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">What I do</p>
-      <h2>From data infrastructure to user outcomes</h2>
-      <div class="grid three">
-        {focusAreas.map((area, index) => (
-          <article class="card focus-card">
-            <span class="card-index">0{index + 1}</span>
-            <h3>{area.title}</h3>
-            <p class="muted">{area.text}</p>
-            <ul class="tags">{area.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
-          </article>
-        ))}
-      </div>
-      <div class="button-row"><a class="button secondary" href="/projects/">See selected work themes</a></div>
-    </div>
-  </section>
-
-  <section class="section latest-section">
-    <div class="container">
-      <p class="eyebrow">Latest writing</p>
-      <h2>Ideas, lessons and open questions</h2>
-      <div class="grid three">
-        {posts.map((post) => (
-          <a class="card card-link article-card" href={`/blog/${post.id}/`}>
-            <p class="meta">{post.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-            <h3>{post.data.title}</h3>
-            <p class="muted">{post.data.description}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
-  .hero { padding: 7rem 0 5rem; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 4rem; }
-  .hero h1 { max-width: 880px; margin-bottom: 1.3rem; }
-  .earth-visual { position: relative; min-height: 450px; display: grid; place-items: center; }
-  .planet { position: relative; width: 250px; aspect-ratio: 1; overflow: hidden; border: 1px solid rgba(114, 211, 255, .55); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #2c8fb4 0, #07506f 43%, #052538 74%); box-shadow: 0 0 0 18px rgba(35, 155, 198, .07), 0 30px 90px rgba(0, 65, 96, .28); }
-  .planet::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.18), transparent 34%, rgba(0,0,0,.26) 68%); }
-  .land { position: absolute; display: block; background: #62a878; opacity: .88; filter: blur(.2px); }
-  .land-one { width: 108px; height: 78px; top: 52px; left: 25px; border-radius: 60% 34% 50% 40%; transform: rotate(-18deg); }
-  .land-two { width: 92px; height: 118px; right: 22px; bottom: 28px; border-radius: 38% 58% 42% 56%; transform: rotate(25deg); }
-  .scan-line { position: absolute; z-index: 2; left: -15%; top: 48%; width: 130%; height: 2px; background: rgba(137, 227, 255, .9); box-shadow: 0 0 14px rgba(137, 227, 255, .9); transform: rotate(-12deg); }
-  .orbit { position: absolute; width: 370px; height: 370px; border: 1px solid rgba(111, 208, 245, .42); border-radius: 50%; transform: rotate(22deg) scaleY(.48); }
-  .orbit-two { width: 445px; height: 445px; border-color: var(--line); transform: rotate(-28deg) scaleY(.42); }
-  .satellite { position: absolute; top: 37px; left: 64px; width: 15px; height: 15px; border-radius: 3px; background: var(--accent); box-shadow: -13px 1px 0 -3px var(--accent), 13px 1px 0 -3px var(--accent); }
-  .data-node { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
-  .node-one { top: 70px; right: 72px; }
-  .node-two { bottom: 80px; left: 62px; }
-  .profile-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--accent-soft) 50%, transparent)); box-shadow: var(--shadow); }
-  .profile-strip h2 { margin-bottom: 0; }
-  .focus-card { position: relative; overflow: hidden; }
-  .focus-card::after { content: ''; position: absolute; right: -30px; bottom: -45px; width: 120px; height: 120px; border: 1px solid var(--line); border-radius: 50%; }
-  .card-index { display: block; margin-bottom: 2rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .82rem; letter-spacing: .12em; }
-  .latest-section { border-top: 1px solid var(--line); }
-  @media (max-width: 850px) { .hero-grid, .profile-strip { grid-template-columns: 1fr; } .earth-visual { min-height: 340px; } .hero { padding-top: 4rem; } .planet { width: 205px; } .orbit { width: 300px; height: 300px; } .orbit-two { width: 350px; height: 350px; } }
+  :global(body:has(.home-page)) {
+    background: #020812;
+    color: #edf8ff;
+  }
+
+  :global(body:has(.home-page) .site-footer) {
+    margin-top: 0;
+    border-top-color: rgba(141, 214, 241, .14);
+    background: #020812;
+    color: #8faaba;
+  }
+
+  :global(body:has(.home-page) .site-footer strong) { color: #edf8ff; }
+
+  .home-page {
+    overflow: clip;
+    background:
+      radial-gradient(circle at 14% 70%, rgba(31, 122, 174, .11), transparent 30rem),
+      #020812;
+    color: #edf8ff;
+  }
+
+  .mission-profile,
+  .latest-section {
+    position: relative;
+    padding: clamp(5rem, 9vw, 9rem) 0;
+  }
+
+  .mission-profile::before,
+  .latest-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(rgba(103, 210, 242, .035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(103, 210, 242, .035) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(180deg, transparent, #000 18% 82%, transparent);
+  }
+
+  .mission-profile {
+    border-top: 1px solid rgba(132, 211, 240, .12);
+    background:
+      radial-gradient(circle at 86% 16%, rgba(37, 145, 199, .12), transparent 26rem),
+      linear-gradient(180deg, #020812, #05101d);
+  }
+
+  .latest-section {
+    border-top: 1px solid rgba(132, 211, 240, .12);
+    background:
+      radial-gradient(circle at 16% 4%, rgba(38, 124, 173, .1), transparent 27rem),
+      #030a13;
+  }
+
+  .section-heading {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: 3rem;
+  }
+
+  .section-heading h2 {
+    max-width: 760px;
+    margin-bottom: 0;
+    color: #f0faff;
+    text-wrap: balance;
+  }
+
+  .section-heading > p {
+    margin: 0;
+    color: #91abba;
+    font-size: 1.05rem;
+  }
+
+  .mission-grid,
+  .article-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .mission-card,
+  .article-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(133, 212, 241, .14);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(11, 32, 48, .8), rgba(4, 15, 27, .72));
+    box-shadow: 0 28px 80px rgba(0, 0, 0, .22);
+    backdrop-filter: blur(14px);
+  }
+
+  .mission-card {
+    min-height: 300px;
+    padding: 1.7rem;
+  }
+
+  .mission-card h3,
+  .article-card h3 {
+    color: #eefaff;
+  }
+
+  .mission-card > p:last-of-type,
+  .article-card > p {
+    color: #93abba;
+  }
+
+  .mission-code {
+    margin: 0 0 3.5rem;
+    color: #70d6f5;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .72rem;
+    letter-spacing: .16em;
+  }
+
+  .signal-line {
+    position: absolute;
+    right: -42px;
+    bottom: -42px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(111, 215, 248, .14);
+    border-radius: 50%;
+  }
+
+  .signal-line::before,
+  .signal-line::after {
+    content: '';
+    position: absolute;
+    inset: 21px;
+    border: inherit;
+    border-radius: inherit;
+  }
+
+  .signal-line::after { inset: 44px; }
+
+  .article-card {
+    min-height: 330px;
+    padding: 1.7rem;
+    text-decoration: none;
+    transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(109, 214, 247, .48);
+    background: linear-gradient(145deg, rgba(14, 43, 64, .9), rgba(5, 20, 34, .78));
+  }
+
+  .article-card .meta {
+    margin-bottom: 2.6rem;
+    color: #70d6f5;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .72rem;
+    letter-spacing: .1em;
+  }
+
+  .article-card > span {
+    position: absolute;
+    left: 1.7rem;
+    bottom: 1.5rem;
+    color: #c9effc;
+    font-size: .88rem;
+    font-weight: 700;
+  }
+
+  .article-card i {
+    display: inline-block;
+    margin-left: .25rem;
+    font-style: normal;
+    transition: transform 180ms ease;
+  }
+
+  .article-card:hover i { transform: translate(3px, -3px); }
+
+  .latest-section .button.secondary {
+    border-color: rgba(143, 219, 245, .25);
+    color: #edf8ff;
+    background: rgba(5, 20, 33, .6);
+  }
+
+  .latest-section .button.secondary:hover { background: rgba(14, 45, 64, .8); }
+
+  @media (max-width: 850px) {
+    .section-heading {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .mission-grid,
+    .article-grid { grid-template-columns: 1fr; }
+
+    .mission-card,
+    .article-card { min-height: 0; }
+
+    .mission-code { margin-bottom: 2rem; }
+    .article-card { padding-bottom: 4.5rem; }
+  }
 </style>
