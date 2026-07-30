@@ -1,0 +1,54 @@
+---
+const currentPath = Astro.url.pathname;
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/writing/', label: 'Writing' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/about/', label: 'About' },
+];
+---
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/" aria-label="Donvan Grobler home">
+      <span class="brand-mark" aria-hidden="true">DG</span>
+      <span>Donvan Grobler</span>
+    </a>
+    <nav aria-label="Main navigation">
+      {links.map((link) => (
+        <a class:list={[{ active: currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) }]} href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(18px); }
+  .nav-wrap { min-height: 72px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1.2rem; }
+  .brand { display: inline-flex; align-items: center; gap: 0.7rem; width: fit-content; font-weight: 800; text-decoration: none; letter-spacing: -0.02em; }
+  .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: var(--text); color: var(--bg); font-size: 0.72rem; letter-spacing: 0.04em; }
+  nav { display: flex; gap: 0.2rem; }
+  nav a { padding: 0.5rem 0.72rem; border-radius: 999px; color: var(--muted); font-size: 0.9rem; font-weight: 650; text-decoration: none; }
+  nav a:hover, nav a.active { background: var(--surface-solid); color: var(--text); }
+  .theme-toggle { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--text); cursor: pointer; }
+  @media (max-width: 760px) {
+    .nav-wrap { grid-template-columns: 1fr auto; min-height: 64px; }
+    .brand span:last-child { display: none; }
+    nav { order: 3; grid-column: 1 / -1; justify-content: space-between; padding-bottom: 0.55rem; }
+    nav a { padding: 0.35rem 0.52rem; font-size: 0.83rem; }
+  }
+</style>
+
+<script is:inline>
+  const root = document.documentElement;
+  const storedTheme = localStorage.getItem('theme');
+  const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (storedTheme === 'dark' || (!storedTheme && preferredDark)) root.dataset.theme = 'dark';
+  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>

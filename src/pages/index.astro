@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
+  .slice(0, 3);
+
+const projects = [
+  {
+    title: 'terrAIntel',
+    text: 'Exploring how natural-language interaction can make complex Earth-observation information understandable and useful to non-specialists.',
+    tags: ['Earth observation', 'Applied AI', 'User experience'],
+  },
+  {
+    title: 'terrAInnovate',
+    text: 'A broader vision for connecting data, models, computation and interpretation into accessible, adaptive geospatial workflows.',
+    tags: ['Geospatial platforms', 'Model execution', 'Product vision'],
+  },
+  {
+    title: 'Operational EO services',
+    text: 'Programme and product work focused on turning technically mature capabilities into reliable, maintainable and commercially usable services.',
+    tags: ['Programme leadership', 'Operations', 'Service design'],
+  },
+];
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Earth observation · Applied AI · Product thinking</p>
+        <h1>Making complex technology useful.</h1>
+        <p class="lead">I work at the intersection of Earth observation, artificial intelligence and product development—turning technical capability into services people can understand, trust and use.</p>
+        <div class="button-row">
+          <a class="button" href="/writing/">Read my writing</a>
+          <a class="button secondary" href="/about/">About my work</a>
+        </div>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="core"><span>Data</span><span>Insight</span><span>Action</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="container statement card">
+      <p class="eyebrow">Current focus</p>
+      <h2>From the last mile back to the source.</h2>
+      <p class="lead">My work increasingly asks a simple question: how can we remove infrastructure, optimisation and interpretation barriers without shifting complexity onto the end user?</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Selected work</p>
+      <h2>Projects and product directions</h2>
+      <div class="grid three">
+        {projects.map((project) => (
+          <article class="card">
+            <h3>{project.title}</h3>
+            <p class="muted">{project.text}</p>
+            <ul class="tags">{project.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+      <div class="button-row"><a class="button secondary" href="/projects/">View project overview</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Latest writing</p>
+      <h2>Ideas, lessons and open questions</h2>
+      <div class="grid three">
+        {posts.map((post) => (
+          <a class="card card-link" href={`/blog/${post.id}/`}>
+            <p class="meta">{post.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <h3>{post.data.title}</h3>
+            <p class="muted">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding: 7rem 0 5rem; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.35fr 0.65fr; align-items: center; gap: 3rem; }
+  .hero h1 { max-width: 850px; margin-bottom: 1.3rem; }
+  .visual { position: relative; min-height: 410px; display: grid; place-items: center; }
+  .core { position: relative; z-index: 2; width: 190px; height: 190px; display: grid; place-content: center; gap: 0.1rem; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); box-shadow: var(--shadow); text-align: center; font-weight: 800; line-height: 1.2; }
+  .core span:nth-child(2) { color: var(--accent); font-size: 1.5rem; }
+  .orbit { position: absolute; border: 1px solid var(--accent); border-radius: 50%; opacity: 0.45; }
+  .orbit-one { width: 300px; height: 300px; transform: rotate(22deg) scaleY(0.54); }
+  .orbit-two { width: 390px; height: 390px; border-color: var(--line); transform: rotate(-32deg) scaleY(0.45); }
+  .statement { padding: clamp(2rem, 5vw, 4rem); }
+  .statement h2 { max-width: 780px; }
+  @media (max-width: 850px) { .hero-grid { grid-template-columns: 1fr; } .visual { min-height: 290px; } .hero { padding-top: 4rem; } }
+</style>

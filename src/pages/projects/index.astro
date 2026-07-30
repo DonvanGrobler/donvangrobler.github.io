@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const projects = [
+  {
+    title: 'terrAIntel',
+    status: 'Working prototype and evolving product direction',
+    description: 'A natural-language interface for thematic Earth-observation information, designed to return maps, statistics and provenance-aware explanations without requiring users to understand the underlying data infrastructure.',
+    role: 'Concept, product direction, architecture and hands-on prototyping',
+  },
+  {
+    title: 'terrAInnovate',
+    status: 'Vision and staged platform development',
+    description: 'An adaptive geospatial AI platform intended to reduce the infrastructure and optimisation burden for data scientists while preserving a simple, interpretable experience for end users.',
+    role: 'Platform vision, staged development planning and product architecture',
+  },
+  {
+    title: 'Operational Earth-observation services',
+    status: 'Programme and service development',
+    description: 'Work across multi-client Earth-observation programmes with emphasis on delivery, operational readiness, responsibility clarity, monitoring and the final steps required to make services reliably usable.',
+    role: 'Programme leadership, product ownership and technical coordination',
+  },
+];
+---
+<BaseLayout title="Projects — Donvan Grobler" description="Selected Earth-observation, AI and product work by Donvan Grobler.">
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">Projects</p>
+      <h1>Selected work and evolving ideas.</h1>
+      <p class="lead">This page focuses on the problems behind the projects, the role I played and the direction of travel rather than presenting a catalogue of technology.</p>
+    </div>
+  </header>
+  <section class="section compact">
+    <div class="container grid">
+      {projects.map((project) => (
+        <article class="card project-card">
+          <div>
+            <p class="eyebrow">{project.status}</p>
+            <h2>{project.title}</h2>
+          </div>
+          <div>
+            <p>{project.description}</p>
+            <p class="meta"><strong>My role:</strong> {project.role}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .project-card { display: grid; grid-template-columns: minmax(220px, 0.7fr) 1.3fr; gap: 2rem; padding: clamp(1.5rem, 4vw, 3rem); }
+  .project-card h2 { margin-bottom: 0; }
+  @media (max-width: 750px) { .project-card { grid-template-columns: 1fr; gap: 0.5rem; } }
+</style>

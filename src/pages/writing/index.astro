@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+---
+<BaseLayout title="Writing — Donvan Grobler" description="Writing by Donvan Grobler on Earth observation, AI, product development and making complex technology useful.">
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">Writing</p>
+      <h1>Ideas worth developing in public.</h1>
+      <p class="lead">Notes and longer essays on Earth observation, artificial intelligence, product development, programme leadership and the challenge of turning technical capability into meaningful outcomes.</p>
+    </div>
+  </header>
+  <section class="section compact">
+    <div class="container grid two">
+      {posts.map((post) => (
+        <a class="card card-link" href={`/blog/${post.id}/`}>
+          <p class="meta">{post.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+          <h2>{post.data.title}</h2>
+          <p class="muted">{post.data.description}</p>
+          <ul class="tags">{post.data.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
