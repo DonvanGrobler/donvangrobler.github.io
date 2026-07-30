@@ -3,14 +3,14 @@ const currentPath = Astro.url.pathname;
 const links = [
   { href: '/', label: 'Home' },
   { href: '/writing/', label: 'Writing' },
-  { href: '/projects/', label: 'Projects' },
+  { href: '/projects/', label: 'Work' },
   { href: '/about/', label: 'About' },
 ];
 ---
 <header class="site-header">
   <div class="container nav-wrap">
     <a class="brand" href="/" aria-label="Donvan Grobler home">
-      <span class="brand-mark" aria-hidden="true">DG</span>
+      <span class="brand-mark" aria-hidden="true"><i></i></span>
       <span>Donvan Grobler</span>
     </a>
     <nav aria-label="Main navigation">
@@ -28,7 +28,9 @@ const links = [
   .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(18px); }
   .nav-wrap { min-height: 72px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1.2rem; }
   .brand { display: inline-flex; align-items: center; gap: 0.7rem; width: fit-content; font-weight: 800; text-decoration: none; letter-spacing: -0.02em; }
-  .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: var(--text); color: var(--bg); font-size: 0.72rem; letter-spacing: 0.04em; }
+  .brand-mark { position: relative; display: grid; place-items: center; width: 38px; height: 38px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line)); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #38a6c9, #07506f 65%, #061b28); box-shadow: 0 0 20px rgba(8,127,167,.18); }
+  .brand-mark::after { content: ''; position: absolute; width: 52px; height: 16px; border: 1px solid rgba(135,225,252,.75); border-radius: 50%; transform: rotate(-22deg); }
+  .brand-mark i { width: 4px; height: 4px; border-radius: 50%; background: #b8efff; box-shadow: 0 0 7px #b8efff; }
   nav { display: flex; gap: 0.2rem; }
   nav a { padding: 0.5rem 0.72rem; border-radius: 999px; color: var(--muted); font-size: 0.9rem; font-weight: 650; text-decoration: none; }
   nav a:hover, nav a.active { background: var(--surface-solid); color: var(--text); }
