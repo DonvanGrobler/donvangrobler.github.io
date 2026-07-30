@@ -1,4 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#176b5b"/>
-  <path d="M17 18h13c12 0 19 5 19 14s-7 14-19 14H17V18Zm12 20c7 0 10-2 10-6s-3-6-10-6h-2v12h2Z" fill="#fff"/>
+  <defs>
+    <radialGradient id="ocean" cx="34%" cy="28%" r="74%">
+      <stop offset="0" stop-color="#38a6c9"/>
+      <stop offset=".62" stop-color="#07506f"/>
+      <stop offset="1" stop-color="#061b28"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="24" fill="url(#ocean)"/>
+  <path d="M18 26c4-7 12-10 20-8l5 5-4 7-8 1-4 6-7-2-2-9Zm19 12 8-3 3 6-7 7-6-3 2-7Z" fill="#70b486" opacity=".92"/>
+  <ellipse cx="32" cy="32" rx="29" ry="11" fill="none" stroke="#9be7fa" stroke-width="2" transform="rotate(-24 32 32)"/>
+  <circle cx="10" cy="40" r="3" fill="#67d4f2"/>
 </svg>
