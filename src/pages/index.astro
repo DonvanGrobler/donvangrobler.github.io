@@ -6,21 +6,21 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
   .slice(0, 3);
 
-const projects = [
+const focusAreas = [
   {
-    title: 'terrAIntel',
-    text: 'Exploring how natural-language interaction can make complex Earth-observation information understandable and useful to non-specialists.',
-    tags: ['Earth observation', 'Applied AI', 'User experience'],
+    title: 'Earth observation products',
+    text: 'Shaping satellite-data capabilities into dependable services that solve concrete user problems.',
+    tags: ['EO services', 'Product strategy', 'Operations'],
   },
   {
-    title: 'terrAInnovate',
-    text: 'A broader vision for connecting data, models, computation and interpretation into accessible, adaptive geospatial workflows.',
-    tags: ['Geospatial platforms', 'Model execution', 'Product vision'],
+    title: 'Geospatial AI',
+    text: 'Exploring how AI can improve discovery, interpretation and interaction without hiding uncertainty or provenance.',
+    tags: ['Applied AI', 'Human–AI interaction', 'Prototyping'],
   },
   {
-    title: 'Operational EO services',
-    text: 'Programme and product work focused on turning technically mature capabilities into reliable, maintainable and commercially usable services.',
-    tags: ['Programme leadership', 'Operations', 'Service design'],
+    title: 'Technical programme leadership',
+    text: 'Connecting users, partners, data scientists and engineers across complex European geospatial initiatives.',
+    tags: ['Delivery', 'Partnerships', 'Technical translation'],
   },
 ];
 ---
@@ -28,54 +28,63 @@ const projects = [
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">Earth observation · Applied AI · Product thinking</p>
-        <h1>Making complex technology useful.</h1>
-        <p class="lead">I work at the intersection of Earth observation, artificial intelligence and product development—turning technical capability into services people can understand, trust and use.</p>
+        <p class="eyebrow">Earth observation · Geospatial AI · Product leadership</p>
+        <h1>Turning satellite data into useful decisions.</h1>
+        <p class="lead">I work where Earth observation, technology and product development meet—helping teams move from promising geospatial capability to services people can understand, trust and use.</p>
         <div class="button-row">
-          <a class="button" href="/writing/">Read my writing</a>
-          <a class="button secondary" href="/about/">About my work</a>
+          <a class="button" href="/about/">Explore my profile</a>
+          <a class="button secondary" href="/writing/">Read my writing</a>
         </div>
       </div>
-      <div class="visual" aria-hidden="true">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="core"><span>Data</span><span>Insight</span><span>Action</span></div>
+      <div class="earth-visual" aria-hidden="true">
+        <div class="planet">
+          <span class="land land-one"></span>
+          <span class="land land-two"></span>
+          <span class="scan-line"></span>
+        </div>
+        <span class="orbit orbit-one"><i class="satellite"></i></span>
+        <span class="orbit orbit-two"></span>
+        <span class="data-node node-one"></span>
+        <span class="data-node node-two"></span>
       </div>
     </div>
   </section>
 
   <section class="section compact">
-    <div class="container statement card">
-      <p class="eyebrow">Current focus</p>
-      <h2>From the last mile back to the source.</h2>
-      <p class="lead">My work increasingly asks a simple question: how can we remove infrastructure, optimisation and interpretation barriers without shifting complexity onto the end user?</p>
+    <div class="container profile-strip">
+      <div>
+        <p class="eyebrow">Profile</p>
+        <h2>A bridge between technical delivery and product direction.</h2>
+      </div>
+      <p class="lead">Based in Innsbruck, I combine programme ownership with hands-on geospatial literacy, proposal development and a research-grounded understanding of land-use and environmental change.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <p class="eyebrow">Selected work</p>
-      <h2>Projects and product directions</h2>
+      <p class="eyebrow">What I do</p>
+      <h2>From data infrastructure to user outcomes</h2>
       <div class="grid three">
-        {projects.map((project) => (
-          <article class="card">
-            <h3>{project.title}</h3>
-            <p class="muted">{project.text}</p>
-            <ul class="tags">{project.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
+        {focusAreas.map((area, index) => (
+          <article class="card focus-card">
+            <span class="card-index">0{index + 1}</span>
+            <h3>{area.title}</h3>
+            <p class="muted">{area.text}</p>
+            <ul class="tags">{area.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
           </article>
         ))}
       </div>
-      <div class="button-row"><a class="button secondary" href="/projects/">View project overview</a></div>
+      <div class="button-row"><a class="button secondary" href="/projects/">See selected work themes</a></div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section latest-section">
     <div class="container">
       <p class="eyebrow">Latest writing</p>
       <h2>Ideas, lessons and open questions</h2>
       <div class="grid three">
         {posts.map((post) => (
-          <a class="card card-link" href={`/blog/${post.id}/`}>
+          <a class="card card-link article-card" href={`/blog/${post.id}/`}>
             <p class="meta">{post.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <h3>{post.data.title}</h3>
             <p class="muted">{post.data.description}</p>
@@ -88,15 +97,26 @@ const projects = [
 
 <style>
   .hero { padding: 7rem 0 5rem; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: 1.35fr 0.65fr; align-items: center; gap: 3rem; }
-  .hero h1 { max-width: 850px; margin-bottom: 1.3rem; }
-  .visual { position: relative; min-height: 410px; display: grid; place-items: center; }
-  .core { position: relative; z-index: 2; width: 190px; height: 190px; display: grid; place-content: center; gap: 0.1rem; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); box-shadow: var(--shadow); text-align: center; font-weight: 800; line-height: 1.2; }
-  .core span:nth-child(2) { color: var(--accent); font-size: 1.5rem; }
-  .orbit { position: absolute; border: 1px solid var(--accent); border-radius: 50%; opacity: 0.45; }
-  .orbit-one { width: 300px; height: 300px; transform: rotate(22deg) scaleY(0.54); }
-  .orbit-two { width: 390px; height: 390px; border-color: var(--line); transform: rotate(-32deg) scaleY(0.45); }
-  .statement { padding: clamp(2rem, 5vw, 4rem); }
-  .statement h2 { max-width: 780px; }
-  @media (max-width: 850px) { .hero-grid { grid-template-columns: 1fr; } .visual { min-height: 290px; } .hero { padding-top: 4rem; } }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 4rem; }
+  .hero h1 { max-width: 880px; margin-bottom: 1.3rem; }
+  .earth-visual { position: relative; min-height: 450px; display: grid; place-items: center; }
+  .planet { position: relative; width: 250px; aspect-ratio: 1; overflow: hidden; border: 1px solid rgba(114, 211, 255, .55); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #2c8fb4 0, #07506f 43%, #052538 74%); box-shadow: 0 0 0 18px rgba(35, 155, 198, .07), 0 30px 90px rgba(0, 65, 96, .28); }
+  .planet::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.18), transparent 34%, rgba(0,0,0,.26) 68%); }
+  .land { position: absolute; display: block; background: #62a878; opacity: .88; filter: blur(.2px); }
+  .land-one { width: 108px; height: 78px; top: 52px; left: 25px; border-radius: 60% 34% 50% 40%; transform: rotate(-18deg); }
+  .land-two { width: 92px; height: 118px; right: 22px; bottom: 28px; border-radius: 38% 58% 42% 56%; transform: rotate(25deg); }
+  .scan-line { position: absolute; z-index: 2; left: -15%; top: 48%; width: 130%; height: 2px; background: rgba(137, 227, 255, .9); box-shadow: 0 0 14px rgba(137, 227, 255, .9); transform: rotate(-12deg); }
+  .orbit { position: absolute; width: 370px; height: 370px; border: 1px solid rgba(111, 208, 245, .42); border-radius: 50%; transform: rotate(22deg) scaleY(.48); }
+  .orbit-two { width: 445px; height: 445px; border-color: var(--line); transform: rotate(-28deg) scaleY(.42); }
+  .satellite { position: absolute; top: 37px; left: 64px; width: 15px; height: 15px; border-radius: 3px; background: var(--accent); box-shadow: -13px 1px 0 -3px var(--accent), 13px 1px 0 -3px var(--accent); }
+  .data-node { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
+  .node-one { top: 70px; right: 72px; }
+  .node-two { bottom: 80px; left: 62px; }
+  .profile-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--accent-soft) 50%, transparent)); box-shadow: var(--shadow); }
+  .profile-strip h2 { margin-bottom: 0; }
+  .focus-card { position: relative; overflow: hidden; }
+  .focus-card::after { content: ''; position: absolute; right: -30px; bottom: -45px; width: 120px; height: 120px; border: 1px solid var(--line); border-radius: 50%; }
+  .card-index { display: block; margin-bottom: 2rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .82rem; letter-spacing: .12em; }
+  .latest-section { border-top: 1px solid var(--line); }
+  @media (max-width: 850px) { .hero-grid, .profile-strip { grid-template-columns: 1fr; } .earth-visual { min-height: 340px; } .hero { padding-top: 4rem; } .planet { width: 205px; } .orbit { width: 300px; height: 300px; } .orbit-two { width: 350px; height: 350px; } }
 </style>

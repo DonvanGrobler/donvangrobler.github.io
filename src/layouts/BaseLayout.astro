@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = 'Donvan Grobler — Earth observation, AI and product thinking',
-  description = 'Writing and selected work by Donvan Grobler at the intersection of Earth observation, applied AI, product development and programme leadership.',
+  title = 'Donvan Grobler — Earth observation and geospatial AI',
+  description = 'Writing and selected work by Donvan Grobler at the intersection of Earth observation, geospatial AI, product development and technical programme leadership.',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -21,7 +21,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#176b5b" />
+    <meta name="theme-color" content="#087fa7" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="Donvan Grobler — Writing" href="/rss.xml" />

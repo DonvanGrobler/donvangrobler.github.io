@@ -1,15 +1,6 @@
 # donvangrobler.github.io
 
-Personal website and blog for Donvan Grobler, built with Astro and deployed free through GitHub Pages.
-
-## First deployment
-
-1. Create a **public** GitHub repository named exactly `donvangrobler.github.io` under the `DonvanGrobler` account.
-2. Upload or push all files in this project to the repository's `main` branch.
-3. In GitHub, open **Settings → Pages**.
-4. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-5. Open the **Actions** tab and confirm that “Deploy to GitHub Pages” completes successfully.
-6. The site will be available at `https://donvangrobler.github.io`.
+Personal website and blog for Donvan Grobler, built with Astro and deployed through GitHub Pages.
 
 ## Local development
 
@@ -46,10 +37,6 @@ draft: true
 4. Change `draft: true` to `draft: false` when ready to publish.
 5. Commit and push to `main`. GitHub Actions will rebuild the site automatically.
 
-## Personalisation checklist
+## Public-repository note
 
-- Review the text on Home, About and Projects.
-- Add a LinkedIn link when ready.
-- Add a CV PDF to `public/` and link it from the About page.
-- Replace or expand the sample welcome post.
-- Complete the private terrAIntel-to-terrAInnovate draft.
+This repository is public. A post marked `draft: true` is excluded from the rendered website, but its Markdown source remains visible on GitHub. Drafts must therefore contain no confidential client, company, budget, contract or internal project information.

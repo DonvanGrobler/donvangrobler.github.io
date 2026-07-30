@@ -18,11 +18,11 @@ I am interested in the point where data becomes information, information becomes
 
 ## Working backwards from the user
 
-One of the recurring themes in my work is that we often start with the infrastructure and only later ask how people will use it. My own path has increasingly moved in the opposite direction.
+One recurring theme in my work is that we often start with the infrastructure and only later ask how people will use it. My own approach increasingly moves in the opposite direction.
 
-With **terrAIntel**, the starting point was the final mile: could a person ask an ordinary question and receive an interpretable map, useful statistics and a clear explanation of where the result came from? Building that experience helped demonstrate that a different kind of access to Earth-observation information is possible.
+The starting point should be the final mile: can a person ask a meaningful question and receive an interpretable map, useful statistics and a clear explanation of where the result came from? From there, we can work backwards through model execution, optimisation, data preparation and infrastructure.
 
-The next question is broader. What would it take to work backwards from that experience—through model execution, optimisation and data preparation—to create a system that also makes life easier for the experts building the underlying analysis? That is part of the emerging vision behind **terrAInnovate**.
+The same principle applies to technical users. Data scientists should be able to focus more of their attention on the analysis itself, while systems absorb more of the burden of scaling, benchmarking and operational delivery.
 
 ## What I will write about
 
