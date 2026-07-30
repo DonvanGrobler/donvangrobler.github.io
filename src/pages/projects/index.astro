@@ -1,54 +1,86 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const projects = [
+
+const themes = [
   {
-    title: 'terrAIntel',
-    status: 'Working prototype and evolving product direction',
-    description: 'A natural-language interface for thematic Earth-observation information, designed to return maps, statistics and provenance-aware explanations without requiring users to understand the underlying data infrastructure.',
-    role: 'Concept, product direction, architecture and hands-on prototyping',
+    number: '01',
+    title: 'Accessible Earth observation',
+    label: 'Product direction',
+    description: 'Designing ways for non-specialists to discover, interpret and use satellite-derived information without first learning the infrastructure behind it.',
+    contribution: 'User framing, product concept, requirements translation and hands-on prototyping',
   },
   {
-    title: 'terrAInnovate',
-    status: 'Vision and staged platform development',
-    description: 'An adaptive geospatial AI platform intended to reduce the infrastructure and optimisation burden for data scientists while preserving a simple, interpretable experience for end users.',
-    role: 'Platform vision, staged development planning and product architecture',
+    number: '02',
+    title: 'Operational EO services',
+    label: 'Programme leadership',
+    description: 'Helping mature geospatial capabilities become reliable services through clearer ownership, delivery governance, monitoring, support processes and practical roadmaps.',
+    contribution: 'Programme ownership, stakeholder coordination, risk management and operationalisation',
   },
   {
-    title: 'Operational Earth-observation services',
-    status: 'Programme and service development',
-    description: 'Work across multi-client Earth-observation programmes with emphasis on delivery, operational readiness, responsibility clarity, monitoring and the final steps required to make services reliably usable.',
-    role: 'Programme leadership, product ownership and technical coordination',
+    number: '03',
+    title: 'AI-assisted geospatial workflows',
+    label: 'Applied research & prototyping',
+    description: 'Exploring how natural-language interaction and agent-assisted development can reduce friction for both users and technical teams while retaining provenance and interpretability.',
+    contribution: 'Concept development, architecture exploration and AI-assisted implementation',
+  },
+  {
+    number: '04',
+    title: 'Environmental change analysis',
+    label: 'Geospatial research',
+    description: 'Applying Earth-observation and GIS methods to understand land-use, land-cover and environmental change across complex landscapes.',
+    contribution: 'Research design, spatial analysis, interpretation and communication',
   },
 ];
 ---
-<BaseLayout title="Projects — Donvan Grobler" description="Selected Earth-observation, AI and product work by Donvan Grobler.">
-  <header class="page-header">
-    <div class="container">
-      <p class="eyebrow">Projects</p>
-      <h1>Selected work and evolving ideas.</h1>
-      <p class="lead">This page focuses on the problems behind the projects, the role I played and the direction of travel rather than presenting a catalogue of technology.</p>
+<BaseLayout title="Work — Donvan Grobler" description="Selected Earth-observation, geospatial AI and product work themes by Donvan Grobler.">
+  <header class="page-header work-header">
+    <div class="container work-intro">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h1>Problems I am interested in solving.</h1>
+      </div>
+      <p class="lead">Rather than listing client or internal project names, this page presents the recurring challenges, capabilities and roles behind my work.</p>
     </div>
   </header>
+
   <section class="section compact">
-    <div class="container grid">
-      {projects.map((project) => (
-        <article class="card project-card">
+    <div class="container work-list">
+      {themes.map((theme) => (
+        <article class="work-card">
+          <div class="work-number">{theme.number}</div>
           <div>
-            <p class="eyebrow">{project.status}</p>
-            <h2>{project.title}</h2>
+            <p class="eyebrow">{theme.label}</p>
+            <h2>{theme.title}</h2>
           </div>
-          <div>
-            <p>{project.description}</p>
-            <p class="meta"><strong>My role:</strong> {project.role}</p>
+          <div class="work-copy">
+            <p>{theme.description}</p>
+            <p class="meta"><strong>Typical contribution:</strong> {theme.contribution}</p>
           </div>
         </article>
       ))}
     </div>
   </section>
+
+  <section class="section principles-section">
+    <div class="container">
+      <p class="eyebrow">Working principles</p>
+      <div class="grid three">
+        <article class="card"><h3>Start with the decision</h3><p class="muted">Understand what a person needs to decide or do before selecting data, models or infrastructure.</p></article>
+        <article class="card"><h3>Absorb complexity</h3><p class="muted">Move technical burden into the system rather than transferring it to users through complicated interfaces.</p></article>
+        <article class="card"><h3>Design for operation</h3><p class="muted">A prototype becomes valuable only when ownership, reliability, costs, monitoring and support are understood.</p></article>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .project-card { display: grid; grid-template-columns: minmax(220px, 0.7fr) 1.3fr; gap: 2rem; padding: clamp(1.5rem, 4vw, 3rem); }
-  .project-card h2 { margin-bottom: 0; }
-  @media (max-width: 750px) { .project-card { grid-template-columns: 1fr; gap: 0.5rem; } }
+  .work-intro { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: end; }
+  .work-list { border-top: 1px solid var(--line); }
+  .work-card { display: grid; grid-template-columns: 80px minmax(220px, .75fr) 1.25fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .work-number { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85rem; letter-spacing: .12em; }
+  .work-card h2 { margin-bottom: 0; font-size: clamp(1.8rem, 3vw, 2.8rem); }
+  .work-copy p:first-child { margin-top: 0; }
+  .principles-section { border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 52%, transparent); }
+  @media (max-width: 850px) { .work-intro { grid-template-columns: 1fr; gap: 1rem; } .work-card { grid-template-columns: 48px 1fr; } .work-copy { grid-column: 2; } }
+  @media (max-width: 560px) { .work-card { grid-template-columns: 1fr; gap: .5rem; } .work-copy { grid-column: auto; } }
 </style>
