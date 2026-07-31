@@ -1,1 +1,0 @@
-Temporary base64 chunks used to materialize verified high-resolution blog images in GitHub Actions. This directory is removed automatically after decoding.
