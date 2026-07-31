@@ -14,6 +14,7 @@ const {
   description = 'Writing and selected work by Donvan Grobler at the intersection of Earth observation, geospatial AI, product development and technical programme leadership.',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const cloudflareWebAnalyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN?.trim();
 ---
 <!doctype html>
 <html lang="en">
@@ -47,5 +48,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <Header />
     <main id="content"><slot /></main>
     <Footer />
+    {
+      cloudflareWebAnalyticsToken && (
+        <script
+          is:inline
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: cloudflareWebAnalyticsToken })}
+        ></script>
+      )
+    }
   </body>
 </html>
