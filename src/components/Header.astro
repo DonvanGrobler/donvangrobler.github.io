@@ -49,13 +49,24 @@ const links = [
 </style>
 
 <script is:inline>
-  const root = document.documentElement;
-  const storedTheme = localStorage.getItem('theme');
-  const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (storedTheme === 'dark' || (!storedTheme && preferredDark)) root.dataset.theme = 'dark';
-  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    localStorage.setItem('theme', next);
-  });
+  (() => {
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+
+    const updateToggleLabel = () => {
+      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      const label = `Switch to ${nextTheme} theme`;
+      toggle.setAttribute('aria-label', label);
+      toggle.setAttribute('title', label);
+    };
+
+    updateToggleLabel();
+    toggle.addEventListener('click', () => {
+      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = nextTheme;
+      localStorage.setItem('theme', nextTheme);
+      updateToggleLabel();
+    });
+  })();
 </script>

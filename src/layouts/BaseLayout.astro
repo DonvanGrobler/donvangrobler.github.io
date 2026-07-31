@@ -33,10 +33,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary" />
     <title>{title}</title>
     <script is:inline>
-      const saved = localStorage.getItem('theme');
-      const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (saved === 'dark' || (!saved && preferredDark)) document.documentElement.dataset.theme = 'dark';
-      if (saved === 'light') document.documentElement.dataset.theme = 'light';
+      (() => {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme =
+          storedTheme === 'dark' || (!storedTheme && prefersDark) ? 'dark' : 'light';
+      })();
     </script>
   </head>
   <body>
