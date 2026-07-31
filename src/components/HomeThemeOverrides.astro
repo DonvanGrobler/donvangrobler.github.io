@@ -1,0 +1,174 @@
+<style is:global>
+  html:not([data-theme='dark']) body:has(.home-page) {
+    background: #edf6f8 !important;
+    color: #092432 !important;
+  }
+
+  html:not([data-theme='dark']) body:has(.home-page) .site-header.home-header {
+    border-bottom-color: rgba(8, 91, 122, .14) !important;
+    background: rgba(244, 250, 252, .9) !important;
+    color: #092432 !important;
+    box-shadow: 0 8px 28px rgba(6, 54, 77, .05);
+  }
+
+  html:not([data-theme='dark']) body:has(.home-page) .home-header nav a {
+    color: #58717d !important;
+  }
+
+  html:not([data-theme='dark']) body:has(.home-page) .home-header nav a:hover,
+  html:not([data-theme='dark']) body:has(.home-page) .home-header nav a.active {
+    background: rgba(8, 127, 167, .09) !important;
+    color: #082d3e !important;
+  }
+
+  html:not([data-theme='dark']) body:has(.home-page) .home-header .theme-toggle {
+    border-color: rgba(8, 91, 122, .2) !important;
+    background: rgba(255, 255, 255, .82) !important;
+    color: #092432 !important;
+  }
+
+  html:not([data-theme='dark']) .home-page {
+    background:
+      radial-gradient(circle at 14% 70%, rgba(34, 145, 185, .1), transparent 30rem),
+      #edf6f8 !important;
+    color: #092432 !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey {
+    background: #dcecf2 !important;
+    color: #092432 !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .journey-sticky {
+    background:
+      radial-gradient(circle at 78% 30%, rgba(255, 255, 255, .76), transparent 24rem),
+      linear-gradient(180deg, #eaf7fb 0%, #9bcde5 47%, #edb28d 82%, #735b59 100%) !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .journey-sticky {
+    background:
+      radial-gradient(circle at 72% 28%, rgba(255, 255, 255, .46), transparent 26rem),
+      linear-gradient(180deg, #dceff7 0%, #81b9d8 48%, #476f8d 78%, #3a4658 100%) !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='2'] .journey-sticky {
+    background:
+      radial-gradient(circle at 74% 28%, rgba(199, 235, 249, .34), transparent 26rem),
+      linear-gradient(180deg, #bcdce9 0%, #6e9fbb 43%, #294e6c 78%, #12283d 100%) !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='3'] .journey-sticky,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='4'] .journey-sticky {
+    background:
+      radial-gradient(circle at 76% 38%, rgba(77, 185, 232, .18), transparent 25rem),
+      radial-gradient(circle at 22% 15%, rgba(94, 112, 181, .13), transparent 30rem),
+      #071625 !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .story-panel h1,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .story-panel h2,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .story-panel h1,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .story-panel h2 {
+    color: #082b3d !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .story-panel p:not(.mission-code),
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .story-panel p:not(.mission-code) {
+    color: #294f61 !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .mission-code,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .mission-code {
+    color: #075f80 !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .button.ghost,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .button.ghost {
+    border-color: rgba(8, 70, 96, .24) !important;
+    background: rgba(246, 252, 254, .62) !important;
+    color: #082b3d !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .scroll-cue,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .scroll-cue,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .telemetry,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .telemetry {
+    color: rgba(7, 54, 74, .72) !important;
+  }
+
+  html:not([data-theme='dark']) .orbital-journey[data-stage='0'] .telemetry strong,
+  html:not([data-theme='dark']) .orbital-journey[data-stage='1'] .telemetry strong {
+    color: #082b3d !important;
+  }
+
+  html:not([data-theme='dark']) .mission-profile {
+    border-top-color: rgba(8, 91, 122, .12) !important;
+    background:
+      radial-gradient(circle at 86% 16%, rgba(37, 145, 199, .1), transparent 26rem),
+      linear-gradient(180deg, #edf6f8, #e5f1f5) !important;
+  }
+
+  html:not([data-theme='dark']) .latest-section {
+    border-top-color: rgba(8, 91, 122, .12) !important;
+    background:
+      radial-gradient(circle at 16% 4%, rgba(38, 124, 173, .08), transparent 27rem),
+      #f3f8fa !important;
+  }
+
+  html:not([data-theme='dark']) .mission-profile::before,
+  html:not([data-theme='dark']) .latest-section::before {
+    background:
+      linear-gradient(rgba(8, 99, 132, .045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(8, 99, 132, .045) 1px, transparent 1px) !important;
+  }
+
+  html:not([data-theme='dark']) .section-heading h2,
+  html:not([data-theme='dark']) .mission-card h3,
+  html:not([data-theme='dark']) .article-card h3 {
+    color: #092432 !important;
+  }
+
+  html:not([data-theme='dark']) .section-heading > p,
+  html:not([data-theme='dark']) .mission-card > p:last-of-type,
+  html:not([data-theme='dark']) .article-card > p {
+    color: #536b78 !important;
+  }
+
+  html:not([data-theme='dark']) .mission-card,
+  html:not([data-theme='dark']) .article-card {
+    border-color: rgba(8, 91, 122, .14) !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(229, 242, 247, .82)) !important;
+    box-shadow: 0 22px 65px rgba(6, 54, 77, .1) !important;
+  }
+
+  html:not([data-theme='dark']) .article-card:hover {
+    border-color: rgba(8, 127, 167, .42) !important;
+    background: linear-gradient(145deg, #ffffff, #e8f4f8) !important;
+  }
+
+  html:not([data-theme='dark']) .mission-code,
+  html:not([data-theme='dark']) .article-card .meta {
+    color: #087fa7 !important;
+  }
+
+  html:not([data-theme='dark']) .article-card > span {
+    color: #075a78 !important;
+  }
+
+  html:not([data-theme='dark']) .latest-section .button.secondary {
+    border-color: rgba(8, 91, 122, .2) !important;
+    color: #092432 !important;
+    background: rgba(255, 255, 255, .72) !important;
+  }
+
+  html:not([data-theme='dark']) body:has(.home-page) .site-footer {
+    border-top-color: rgba(8, 91, 122, .13) !important;
+    background: #edf6f8 !important;
+    color: #536b78 !important;
+  }
+
+  html:not([data-theme='dark']) body:has(.home-page) .site-footer strong {
+    color: #092432 !important;
+  }
+</style>
