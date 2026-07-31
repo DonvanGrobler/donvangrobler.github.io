@@ -25,7 +25,58 @@ const date = post.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric
   </article>
 </BaseLayout>
 
-<style>
-  .article-header h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
-  .article-body { padding-bottom: 4rem; }
+<style is:global>
+  .article-header h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .article-body {
+    padding-bottom: 4rem;
+  }
+
+  .article-body figure {
+    margin: 2.25rem 0;
+  }
+
+  .article-body figure img {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--surface-solid);
+    box-shadow: var(--shadow);
+  }
+
+  .article-body figcaption {
+    margin-top: 0.7rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .article-body .image-pair {
+    display: grid;
+    width: min(1080px, calc(100vw - 2rem));
+    margin: 2.5rem 50%;
+    transform: translateX(-50%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .article-body .image-pair figure {
+    margin: 0;
+  }
+
+  .article-body .wide-figure {
+    width: min(960px, calc(100vw - 2rem));
+    margin: 2.5rem 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 800px) {
+    .article-body .image-pair {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
