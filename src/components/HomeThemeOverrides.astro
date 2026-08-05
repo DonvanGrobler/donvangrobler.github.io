@@ -102,6 +102,28 @@
     color: #082b3d !important;
   }
 
+  @media (max-width: 900px) {
+    html:not([data-theme='dark']) .orbital-journey[data-stage] .story-panel h1,
+    html:not([data-theme='dark']) .orbital-journey[data-stage] .story-panel h2 {
+      color: #f3fbff !important;
+      text-shadow: none;
+    }
+
+    html:not([data-theme='dark']) .orbital-journey[data-stage] .story-panel p:not(.mission-code) {
+      color: #b8d0dc !important;
+    }
+
+    html:not([data-theme='dark']) .orbital-journey[data-stage] .mission-code {
+      color: #7bdcff !important;
+    }
+
+    html:not([data-theme='dark']) .orbital-journey[data-stage] .button.ghost {
+      border-color: rgba(177, 226, 244, .28) !important;
+      background: rgba(5, 18, 30, .46) !important;
+      color: #edf9ff !important;
+    }
+  }
+
   html:not([data-theme='dark']) .mission-profile {
     border-top-color: rgba(8, 91, 122, .12) !important;
     background:
