@@ -51,7 +51,7 @@ Satellites allow us to follow changes in forests, crops, surface water, glaciers
 
 But *you cannot manage what you do not measure* contains two parts. Our industry has become extremely good at the **measurement**, while the reason for measuring was always to improve the **management**. This is the problem I have tried to represent with the **EO Value Pyramid**.
 
-![The EO Value Pyramid showing the journey from raw EO observations and data products through the Interpretation and Action Gap to information, decision intelligence, and real-world outcomes.](/images/blog/eo-value-pyramid.svg)
+![The EO Value Pyramid showing the journey from raw EO observations and data products through the Interpretation and Action Gap to information, decision intelligence, and real-world outcomes.](/images/blog/eo-value-pyramid-original.png)
 
 At its foundation are raw EO observations and the processed data products derived from them, which are areas where our industry has developed enormous technical expertise. Higher in the pyramid, however, the nature of the value changes. Data becomes **information and insights**, those insights become **decision intelligence** when combined with enough context, and ultimately that knowledge needs to reach **decisions, actions and outcomes** in the real world.
 
