@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 1450" role="img" aria-labelledby="title desc">
+  <title id="title">The EO Value Pyramid</title>
+  <desc id="desc">Earth observation value pyramid moving from raw observations and data products through an interpretation and action gap to information, decision intelligence, and real-world decisions and outcomes.</desc>
+  <defs>
+    <linearGradient id="slate" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#425667"/><stop offset="1" stop-color="#233441"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ef6537"/><stop offset="1" stop-color="#c94524"/></linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb21d"/><stop offset="1" stop-color="#e88907"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2997c7"/><stop offset="1" stop-color="#12678f"/></linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#78c52d"/><stop offset="1" stop-color="#3c8f23"/></linearGradient>
+    <style>
+      .sans{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.title{font-size:74px;font-weight:800;fill:#0a2a43;letter-spacing:-2px}.subtitle{font-size:28px;font-weight:450;fill:#4c6577}.levelTitle{font-size:32px;font-weight:760;fill:#fff;text-anchor:middle}.levelSub{font-size:20px;font-weight:520;fill:#fff;text-anchor:middle;opacity:.95}.side{font-size:24px;font-weight:760;fill:#29485d}.sectionLabel{font-size:27px;font-weight:800;letter-spacing:.5px}.gapTitle{font-size:28px;font-weight:800;fill:#c94b29;text-anchor:middle}.gapSub{font-size:20px;font-weight:650;fill:#163952;text-anchor:middle}
+    </style>
+  </defs>
+  <rect x="18" y="18" width="1314" height="1414" rx="34" fill="#fbfcfd" stroke="#dbe5ea" stroke-width="2"/>
+  <g class="sans">
+    <text x="675" y="105" class="title" text-anchor="middle">The EO Value Pyramid</text>
+    <text x="675" y="154" class="subtitle" text-anchor="middle">From measurement to meaning, decisions and real-world outcomes</text>
+    <line x1="94" y1="1170" x2="94" y2="330" stroke="#7894a7" stroke-width="12" stroke-linecap="round"/><path d="M94 292 L68 345 H120 Z" fill="#7894a7"/><text x="60" y="760" class="side" text-anchor="middle" transform="rotate(-90 60 760)">Increasing user value</text>
+    <path d="M1080 316 h25 q20 0 20 20 v485 q0 20-20 20 h-25" fill="none" stroke="#4c9a35" stroke-width="4"/><text x="1120" y="548" class="sectionLabel" fill="#357b2c">MEANING</text><text x="1120" y="585" class="sectionLabel" fill="#357b2c">→ ACTION</text>
+    <path d="M1080 1010 h25 q20 0 20 20 v267 q0 20-20 20 h-25" fill="none" stroke="#61788a" stroke-width="4"/><text x="1120" y="1175" class="sectionLabel" fill="#526a7c">MEASUREMENT</text>
+    <path d="M600 205 L820 485 Q827 495 813 495 H387 Q373 495 380 485 Z" fill="url(#green)"/><circle cx="600" cy="314" r="27" fill="none" stroke="#fff" stroke-width="3"/><path d="M586 322 q14-16 28 0 M590 306 a8 8 0 1 0 16 0 a8 8 0 1 0-16 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><text x="600" y="395" class="levelTitle">Decisions, Actions</text><text x="600" y="433" class="levelTitle">&amp; Outcomes</text><text x="600" y="470" class="levelSub">integrated tools • interventions • impact</text>
+    <path d="M362 520 H838 Q852 520 858 533 L906 678 Q912 696 892 696 H308 Q288 696 294 678 L342 533 Q348 520 362 520 Z" fill="url(#blue)"/><text x="600" y="606" class="levelTitle">Decision Intelligence</text><text x="600" y="647" class="levelSub">context • options • operational guidance</text>
+    <path d="M310 722 H890 Q904 722 911 736 L964 871 Q971 890 950 890 H250 Q229 890 236 871 L289 736 Q296 722 310 722 Z" fill="url(#orange)"/><text x="600" y="806" class="levelTitle">Information &amp; Insights</text><text x="600" y="848" class="levelSub">indicators • forecasts • alerts</text>
+    <rect x="228" y="920" width="744" height="158" rx="24" fill="#f4f7f8" stroke="#d4e0e6" stroke-width="2"/><text x="600" y="958" class="gapTitle">Interpretation &amp; Action Gap</text><rect x="344" y="982" width="512" height="54" rx="15" fill="#fff" stroke="#274e68" stroke-width="2"/><text x="600" y="1016" class="gapSub">Domain expertise + AI/LLMs + agents + validation</text><line x1="305" y1="1053" x2="895" y2="1053" stroke="#7894a7" stroke-width="6" stroke-linecap="round"/><path d="M895 1053 L870 1039 L870 1067 Z" fill="#7894a7"/>
+    <path d="M230 1102 H970 Q984 1102 991 1115 L1035 1214 Q1043 1233 1021 1233 H179 Q157 1233 165 1214 L209 1115 Q216 1102 230 1102 Z" fill="url(#red)"/><text x="600" y="1170" class="levelTitle">EO Data Products</text><text x="600" y="1206" class="levelSub">processed • derived • mapped</text>
+    <path d="M170 1256 H1030 Q1043 1256 1050 1269 L1090 1358 Q1098 1378 1076 1378 H124 Q102 1378 110 1358 L150 1269 Q157 1256 170 1256 Z" fill="url(#slate)"/><text x="600" y="1322" class="levelTitle">Raw EO Observations</text><text x="600" y="1358" class="levelSub">imagery • sensors • signals</text>
+  </g>
+</svg>
