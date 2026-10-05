@@ -15,11 +15,11 @@ Large multimodal models have become remarkably good at looking at images. That s
 
 So, in the spirit of highly rigorous scientific experimentation, I uploaded a few satellite images to ChatGPT and started asking questions. I used GPT-5.6 Sol for these tests which, given the current pace of model releases, may already sound outdated by the time you read this.
 
-One of my tests used very-high-resolution WorldView Legion imagery of an airport that I found on the [Pacific Geomatics WorldView Legion page](https://pacgeo.com/satellite/worldview-legion/). I simply asked ChatGPT to identify and count the aircraft in the image. The result was genuinely impressive. It found almost all of them and missed only one, which is probably easier to appreciate by looking at the result than by me describing it. See if you can spot the aircraft it missed.
+One of my tests used very-high-resolution WorldView Legion imagery of an airport that I found on the [Pacific Geomatics WorldView Legion page](https://pacgeo.com/satellite/worldview-legion/). I simply asked ChatGPT to identify and count the aircraft in the image. The result was genuinely impressive. It found almost all of them and missed only two, which is probably easier to appreciate by looking at the result than by me describing it. See if you can spot the two aircraft it missed.
 
 <figure>
   <img src="/images/blog/can-we-stop-training-eo-models-yet/airport-chatgpt-result.png" alt="WorldView Legion airport image annotated by ChatGPT to identify and count aircraft" loading="lazy" />
-  <figcaption>ChatGPT's result from the aircraft-counting experiment. It identified almost every visible aircraft but missed one.</figcaption>
+  <figcaption>ChatGPT's result from the aircraft-counting experiment. It identified almost every visible aircraft but missed two.</figcaption>
 </figure>
 
 *WorldView Legion imagery © Maxar Technologies, sourced via Pacific Geomatics. AI annotations generated using ChatGPT GPT-5.6 Sol.*
@@ -83,7 +83,7 @@ All of this brings me back to the smoke example because I think it demonstrates 
 
 The same applies to flood mapping, burned-area detection, crop stress, damaged buildings or almost any other EO product. Once I want to calculate hectares affected, buildings damaged or people exposed, "that looks about right" stops being a particularly useful validation metric.
 
-The aircraft example makes the same point in a slightly different way. Missing one aircraft in my casual experiment is incredibly impressive. Missing one aircraft in an operational system where the requirement is to account for every aircraft could be a significant failure. Whether something is "good enough" therefore depends heavily on the purpose of the analysis.
+The aircraft example makes the same point in a slightly different way. Missing two aircraft in my casual experiment is still incredibly impressive. Missing even one aircraft in an operational system where the requirement is to account for every aircraft could be a significant failure. Whether something is "good enough" therefore depends heavily on the purpose of the analysis.
 
 I think this is the distinction that matters most in the whole discussion. Image understanding and EO measurement are closely related, but they are not the same task. A general-purpose multimodal model can be extremely impressive at recognising and reasoning about what is visible in an image without necessarily being the right tool for producing a scientifically defensible EO data product.
 
