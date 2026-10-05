@@ -17,7 +17,7 @@ So, in the spirit of highly rigorous scientific experimentation, I uploaded a fe
 
 One of my tests used very-high-resolution WorldView Legion imagery of an airport that I found on the [Pacific Geomatics WorldView Legion page](https://pacgeo.com/satellite/worldview-legion/). I simply asked ChatGPT to identify and count the aircraft in the image. The result was genuinely impressive. It found almost all of them and missed only one, which is probably easier to appreciate by looking at the result than by me describing it. See if you can spot the aircraft it missed.
 
-<figure class="wide-figure">
+<figure>
   <img src="/images/blog/can-we-stop-training-eo-models-yet/airport-chatgpt-result.png" alt="WorldView Legion airport image annotated by ChatGPT to identify and count aircraft" loading="lazy" />
   <figcaption>ChatGPT's result from the aircraft-counting experiment. It identified almost every visible aircraft but missed one.</figcaption>
 </figure>
@@ -26,7 +26,7 @@ One of my tests used very-high-resolution WorldView Legion imagery of an airport
 
 I then tried something a little more difficult using satellite imagery showing burning oil storage tanks and smoke over Chernihiv, Ukraine, during the Russian invasion. The image was published by [Politico](https://www.politico.com/news/2022/04/06/satellite-russian-war-crimes-00023386) and credited to Maxar Technologies/AP Photo. This time I asked ChatGPT to identify and highlight the smoke plumes. The result was considerably less precise than the aircraft example, but it was also not completely wrong. It broadly understood what it was looking at and where much of the smoke was, even if I certainly would not use the result as a production-ready smoke mask.
 
-<figure class="wide-figure">
+<figure>
   <img src="/images/blog/can-we-stop-training-eo-models-yet/smoke-chatgpt-result.png" alt="Satellite image annotated by ChatGPT to identify smoke plumes near Chernihiv, Ukraine" loading="lazy" />
   <figcaption>ChatGPT's attempt to identify the smoke plumes. Broadly correct, but not something I would call a reliable smoke mask.</figcaption>
 </figure>
